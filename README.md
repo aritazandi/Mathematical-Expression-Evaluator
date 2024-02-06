@@ -4,7 +4,7 @@ This Python script parses and evaluates mathematical expressions using binary tr
 ## How to Use
 1. Clone this repository to your local machine.
 2. Run the Python script Math (Arita Zandi).py.
-3. The script is currently set to evaluate the expression (((a+b)+(c*a))^(-a)) with a=1, b=2, and c=3. You can modify the expression and variables in the script to evaluate different expressions.
+3. The script is currently set to evaluate the expression (((a+b)+(c*a))^(-a)) with a=-1, b=2, and c=3. You can modify the expression and variables in the script to evaluate different expressions.
 
 ## Features
 - Constructs a binary tree from a mathematical expression.
