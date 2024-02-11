@@ -6,9 +6,11 @@ class Node:
         self.right = None
         self.parent = None
 
-def create_tree(expression):
+def create_tree(expression: str):
     root = Node(None) 
     current_node = root
+    if "(-" in expression:
+        expression = expression.replace("(-","(0-")
     
     for i in range(0,len(expression)):
         char = expression[i]
@@ -22,16 +24,13 @@ def create_tree(expression):
             
         elif char in operators:
             
-            if expression[i-1] == '(':
-                current_node.left = Node(0)
-                current_node.left.parent = current_node
                 
             current_node.value = char
             current_node.right = Node(None)
             current_node.right.parent = current_node
             current_node = current_node.right
 
-        elif char.isalpha():
+        elif char.isalpha() or char=="0":
             current_node.value = char
             current_node = current_node.parent
 
@@ -47,7 +46,7 @@ def post_order(node):
 
 def evaluate_postfix(postfix, variables):
     stack = []
-    
+    variables['0'] = 0
     for char in postfix:
         if char in operators:
 
@@ -66,10 +65,8 @@ def evaluate_postfix(postfix, variables):
                 stack.append(qabl_qabli ** qabli)
             
         else:
-            if char == 0:
-                stack.append(0)
-            else:
-                stack.append(variables[char])
+            stack.append(variables[char])
+            
                 
     return stack.pop()
 
